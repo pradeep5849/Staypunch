@@ -39,7 +39,7 @@ jobs:
             echo "::error::Configure STAYPUNCH_MIGRATION_DATABASE_URL in the protected environment."
             exit 1
           fi
-      - name: Install locked dependencies
-        run: npm ci
+      - name: Install locked dependencies including TypeScript runner
+        run: npm ci --include=dev
       - name: Apply repository migrations
         run: npm run migrate

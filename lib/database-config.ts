@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import type { PoolConfig } from "pg";
+import { normalizeCaPem } from "./database-ca.mjs";
 export type DatabasePurpose = "runtime" | "migration" | "email";
 function integer(
   value: string | undefined,
@@ -72,9 +73,12 @@ export function databaseConfig(
     throw new Error(
       "Migrations require a direct or session connection, not a transaction pooler",
     );
-  const ca = env.DATABASE_CA_CERT_FILE
+  if (env.DATABASE_CA_CERT_FILE && env.DATABASE_CA_PEM)
+    throw new Error("Configure only one database CA certificate source");
+  const rawCa = env.DATABASE_CA_CERT_FILE
     ? readFileSync(env.DATABASE_CA_CERT_FILE, "utf8")
-    : undefined;
+    : env.DATABASE_CA_PEM;
+  const ca = rawCa === undefined ? undefined : normalizeCaPem(rawCa);
   return {
     connectionString: url.toString(),
     ssl: tls ? { rejectUnauthorized: true, ...(ca ? { ca } : {}) } : false,

@@ -131,12 +131,14 @@ export function PageTitle({
 export function Panel({
   title,
   children,
+  id,
 }: {
   title: string;
   children: ReactNode;
+  id?: string;
 }) {
   return (
-    <section className="panel">
+    <section className="panel" id={id}>
       <h2>{title}</h2>
       {children}
     </section>

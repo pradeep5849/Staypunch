@@ -25,7 +25,6 @@ jobs:
       MIGRATION_DATABASE_URL: ${{ secrets.STAYPUNCH_MIGRATION_DATABASE_URL }}
       DATABASE_SSL: 'true'
       NODE_ENV: production
-      DATABASE_CA_CERT_FILE: ${{ runner.temp }}/staypunch-database-ca.pem
     steps:
       - name: Check out reviewed source
         uses: actions/checkout@v4

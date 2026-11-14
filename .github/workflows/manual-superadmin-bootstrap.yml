@@ -1,0 +1,58 @@
+name: Manual StayPunch360 Super Admin bootstrap
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: "Type CREATE-STAYPUNCH-SUPERADMIN to confirm"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: staypunch360-production-database
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirmation == 'CREATE-STAYPUNCH-SUPERADMIN' }}
+    runs-on: ubuntu-latest
+    environment: staypunch360-production
+    timeout-minutes: 15
+    env:
+      MIGRATION_DATABASE_URL: ${{ secrets.STAYPUNCH_MIGRATION_DATABASE_URL }}
+      BOOTSTRAP_ADMIN_EMAIL: sales.amjconsterior@gmail.com
+      BOOTSTRAP_ADMIN_PASSWORD: ${{ secrets.STAYPUNCH_BOOTSTRAP_ADMIN_PASSWORD }}
+      DATABASE_SSL: "true"
+      NODE_ENV: production
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Validate required secrets
+        shell: bash
+        run: |
+          if [ -z "$MIGRATION_DATABASE_URL" ] || [ -z "$BOOTSTRAP_ADMIN_PASSWORD" ]; then
+            echo "::error::Missing migration database URL or bootstrap password in protected environment."
+            exit 1
+          fi
+      - name: Install trusted database CA certificate
+        env:
+          DATABASE_CA_PEM: ${{ secrets.STAYPUNCH_DATABASE_CA_CERT }}
+        run: node scripts/install-database-ca.mjs
+      - name: Install locked dependencies including TypeScript runner
+        run: npm ci --include=dev
+      - name: Create Super Admin using application bootstrap
+        run: npx tsx scripts/bootstrap-admin.ts
+      - name: Remove temporary database CA
+        if: always()
+        run: |
+          if [ -n "$DATABASE_CA_CERT_FILE" ]; then
+            rm -f -- "$DATABASE_CA_CERT_FILE"
+          fi

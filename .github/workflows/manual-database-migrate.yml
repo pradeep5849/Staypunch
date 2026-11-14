@@ -25,6 +25,7 @@ jobs:
       MIGRATION_DATABASE_URL: ${{ secrets.STAYPUNCH_MIGRATION_DATABASE_URL }}
       DATABASE_SSL: 'true'
       NODE_ENV: production
+      DATABASE_CA_CERT_FILE: ${{ runner.temp }}/staypunch-database-ca.pem
     steps:
       - name: Check out reviewed source
         uses: actions/checkout@v4
@@ -37,6 +38,20 @@ jobs:
         run: |
           if [ -z "$MIGRATION_DATABASE_URL" ]; then
             echo "::error::Configure STAYPUNCH_MIGRATION_DATABASE_URL in the protected environment."
+            exit 1
+          fi
+      - name: Install trusted database CA certificate
+        env:
+          DATABASE_CA_PEM: ${{ secrets.STAYPUNCH_DATABASE_CA_CERT }}
+        run: |
+          if [ -z "$DATABASE_CA_PEM" ]; then
+            echo "::error::Add STAYPUNCH_DATABASE_CA_CERT to the protected environment."
+            exit 1
+          fi
+          umask 077
+          printf '%s\\n' "$DATABASE_CA_PEM" > "$DATABASE_CA_CERT_FILE"
+          if ! openssl x509 -in "$DATABASE_CA_CERT_FILE" -noout >/dev/null; then
+            echo "::error::The configured database CA certificate is not a valid PEM certificate."
             exit 1
           fi
       - name: Install locked dependencies including TypeScript runner

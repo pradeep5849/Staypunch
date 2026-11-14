@@ -1,4 +1,5 @@
-import { Pool } from "pg";
+import { Client, Pool } from "pg";
+import { dropTestDatabase } from "./lib/test-database";
 import { randomUUID } from "node:crypto";
 import { mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -141,8 +142,9 @@ try {
   );
   const targetURL = new URL(sourceURL);
   targetURL.pathname = `/${targetName}`;
-  const target = new Pool({ connectionString: targetURL.toString() });
+  const target = new Client({ connectionString: targetURL.toString() });
   try {
+    await target.connect();
     for (const t of counts!)
       assert.equal(
         (await target.query(`SELECT count(*) total FROM public."${t.name}"`))
@@ -197,8 +199,9 @@ try {
   }
   const appTargetURL = new URL(runtimeURL);
   appTargetURL.pathname = `/${targetName}`;
-  const app = new Pool({ connectionString: appTargetURL.toString() });
+  const app = new Client({ connectionString: appTargetURL.toString() });
   try {
+    await app.connect();
     assert.equal(
       (await app.query("SELECT count(*) total FROM properties")).rows[0].total,
       "0",
@@ -215,7 +218,13 @@ try {
     `Restore drill passed: ${counts!.length} tables reconciled, RLS retained, runtime isolation verified, zero released modules. Temporary database and backup are removed.`,
   );
 } finally {
-  if (created) await owner.query(`DROP DATABASE "${targetName}" WITH (FORCE)`);
-  await owner.end();
-  await rm(directory, { recursive: true, force: true });
+  try {
+    if (created) await dropTestDatabase(owner, targetName);
+  } finally {
+    try {
+      await owner.end();
+    } finally {
+      await rm(directory, { recursive: true, force: true });
+    }
+  }
 }

@@ -2,8 +2,11 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
-import { execFileSync } from "node:child_process";
-import { Pool } from "pg";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import { dropTestDatabase } from "../../scripts/lib/test-database";
+import { Client, Pool } from "pg";
+const runFile = promisify(execFile);
 test("upgrading the populated original foundation preserves accounts, sessions, tokens and property data", async () => {
   assert.ok(
     process.env.TEST_DATABASE_OWNER_URL && process.env.TEST_DATABASE_URL,
@@ -23,13 +26,14 @@ test("upgrading the populated original foundation preserves accounts, sessions, 
     created = true;
     const targetURL = new URL(source);
     targetURL.pathname = `/${name}`;
-    const target = new Pool({ connectionString: targetURL.toString() });
+    const target = new Client({ connectionString: targetURL.toString() });
     const user = randomUUID(),
       org = randomUUID(),
       property = randomUUID();
     const session = randomUUID().replaceAll("-", "");
     const reset = randomUUID().replaceAll("-", "");
     try {
+      await target.connect();
       await target.query(
         "CREATE TABLE schema_migrations(name text PRIMARY KEY,applied_at timestamptz NOT NULL DEFAULT now())",
       );
@@ -75,9 +79,9 @@ test("upgrading the populated original foundation preserves accounts, sessions, 
         [`upgrade-${user}@example.test`],
       );
       try {
-        execFileSync("node_modules/.bin/tsx", ["scripts/migrate.ts"], {
+        await runFile("node_modules/.bin/tsx", ["scripts/migrate.ts"], {
           env: { ...process.env, MIGRATION_DATABASE_URL: targetURL.toString() },
-          stdio: "pipe",
+          timeout: 120000,
         });
       } catch {
         throw new Error("Isolated upgrade migration failed");
@@ -143,9 +147,9 @@ test("upgrading the populated original foundation preserves accounts, sessions, 
       );
       const runtimeURL = new URL(process.env.TEST_DATABASE_URL);
       runtimeURL.pathname = `/${name}`;
-      const app = new Pool({ connectionString: runtimeURL.toString() });
-      const db = await app.connect();
+      const db = new Client({ connectionString: runtimeURL.toString() });
       try {
+        await db.connect();
         await db.query("BEGIN");
         await db.query("SELECT set_config('app.user_id',$1,true)", [user]);
         assert.equal(
@@ -154,14 +158,16 @@ test("upgrading the populated original foundation preserves accounts, sessions, 
         );
         await db.query("ROLLBACK");
       } finally {
-        db.release();
-        await app.end();
+        await db.end();
       }
     } finally {
       await target.end();
     }
   } finally {
-    if (created) await cluster.query(`DROP DATABASE "${name}" WITH (FORCE)`);
-    await cluster.end();
+    try {
+      if (created) await dropTestDatabase(cluster, name);
+    } finally {
+      await cluster.end();
+    }
   }
 });

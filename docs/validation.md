@@ -1,4 +1,6 @@
-# Foundation validation results
+# Initial foundation validation (PR #2; historical)
+
+For the current S1A evidence, see [stage validation](planning/stage-validation.md). This report records the earlier foundation baseline.
 
 Validated locally on 14 November 2026 with Node 24.19.0, Next.js 16.4.6, PostgreSQL 17 and installed Chromium. CI is configured for Node 22 and a fresh PostgreSQL 17 service. Base revision: `e0bdf426f56f820c2ae2a2f5ee34fccd7d58ac8f`.
 

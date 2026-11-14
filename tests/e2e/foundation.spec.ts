@@ -192,6 +192,19 @@ test("property onboarding, authorization, invitations, release enforcement and r
     expect(
       (await post(ctx, `/api/modules/${id}`, { propertyId })).status(),
     ).toBe(403);
+  const verificationMail = (
+    await db.query(
+      "SELECT body FROM email_outbox WHERE recipient=$1 AND kind='verification' ORDER BY created_at DESC LIMIT 1",
+      [ownerEmail],
+    )
+  ).rows[0].body;
+  expect(
+    (
+      await post(ctx, "/api/auth/verify-email", {
+        token: new URL(verificationMail).searchParams.get("token"),
+      })
+    ).status(),
+  ).toBe(200);
   const staffEmail = `staff-${suffix}@example.test`;
   expect(
     (

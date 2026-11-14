@@ -1,0 +1,2602 @@
+[
+  {
+    "id": "A-01",
+    "requirement": "Organization/tenant isolation; chain, brand, property, building, floor and room hierarchy",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Organizations/properties/memberships and tenant RLS exist; brand/building/floor hierarchy absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-01: organization/tenant isolation; chain, brand, property, building, floor and room hierarchy; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-02",
+    "requirement": "Hotel/resort/homestay/hostel/villa/serviced apartment property templates",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "hotel/resort/homestay/other supported; full property templates absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-02: hotel/resort/homestay/hostel/villa/serviced apartment property templates; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-03",
+    "requirement": "Property profile, policies, address, amenities, images, contacts, timezone and currency",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Contact/address/amenities persist; policies/images/timezone/currency absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-03: property profile, policies, address, amenities, images, contacts, timezone and currency; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-04",
+    "requirement": "Physical room, pooled room type, bed, villa and bookable non-room space inventories",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Room types/units schema exists; physical-unit UI, beds/resources and canonical ledger absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-04: physical room, pooled room type, bed, villa and bookable non-room space inventories; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-05",
+    "requirement": "Room combinations, connecting rooms, dormitory beds and whole-property exclusivity",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-05: room combinations, connecting rooms, dormitory beds and whole-property exclusivity; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-06",
+    "requirement": "Room attributes, accessible rooms, occupancy limits, extra beds, child/infant policies",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Room-type capacity exists; accessibility/extra beds/child policies absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-06: room attributes, accessible rooms, occupancy limits, extra beds, child/infant policies; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-07",
+    "requirement": "Property onboarding wizard, sample data, guided setup and import from CSV/legacy PMS",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Registration/profile setup works; wizard/import/sample-data tooling absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-07: property onboarding wizard, sample data, guided setup and import from CSV/legacy PMS; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-08",
+    "requirement": "Central owner dashboard and per-property operational access",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Membership-based property switching exists; operational group management absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-08: central owner dashboard and per-property operational access; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "A-09",
+    "requirement": "Multi-language labels, property-specific custom fields, templates and forms",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["property-setup", "staff-roles", "multi-property", "settings"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate A-09: multi-language labels, property-specific custom fields, templates and forms; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-01",
+    "requirement": "Single canonical inventory ledger with date-level sellable capacity and allocations",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-01: single canonical inventory ledger with date-level sellable capacity and allocations; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-02",
+    "requirement": "Availability holds with expiry, atomic confirmation, cancellation and release",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-02: availability holds with expiry, atomic confirmation, cancellation and release; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-03",
+    "requirement": "Overbooking protection, controlled authorized overbooking and conflict workflow",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-03: overbooking protection, controlled authorized overbooking and conflict workflow; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-04",
+    "requirement": "Out-of-order/out-of-service blocks, maintenance blocks and owner blocks",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-04: out-of-order/out-of-service blocks, maintenance blocks and owner blocks; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-05",
+    "requirement": "Rate plans, base rates, occupancy pricing, child/extra-person fees, meal plans",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-05: rate plans, base rates, occupancy pricing, child/extra-person fees, meal plans; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-06",
+    "requirement": "Derived rates, linked plans, seasonal/weekend/holiday/event pricing",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-06: derived rates, linked plans, seasonal/weekend/holiday/event pricing; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-07",
+    "requirement": "Min/max stay, CTA/CTD, stop sell, advance booking windows, closed dates",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-07: min/max stay, CTA/CTD, stop sell, advance booking windows, closed dates; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-08",
+    "requirement": "Bulk calendar, copy rates, rule precedence, rate override approvals",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-08: bulk calendar, copy rates, rule precedence, rate override approvals; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-09",
+    "requirement": "Packages combining rooms, meals, experiences, transport and activities",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-09: packages combining rooms, meals, experiences, transport and activities; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-10",
+    "requirement": "Inventory allotments, corporate blocks, wholesaler allocations and release dates",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-10: inventory allotments, corporate blocks, wholesaler allocations and release dates; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-11",
+    "requirement": "Tax-inclusive/exclusive price breakdown, rounding and currency precision",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-11: tax-inclusive/exclusive price breakdown, rounding and currency precision; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "B-12",
+    "requirement": "Availability cache invalidation, stale-quote prevention and price revalidation",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1B",
+    "modules": ["inventory-management", "rate-management"],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate B-12: availability cache invalidation, stale-quote prevention and price revalidation; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-01",
+    "requirement": "Embeddable booking widget and hosted white-label property booking page",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-01: embeddable booking widget and hosted white-label property booking page; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-02",
+    "requirement": "Responsive search: dates, rooms, guests, room/rate comparison and upsells",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-02: responsive search: dates, rooms, guests, room/rate comparison and upsells; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-03",
+    "requirement": "Real-time availability/price recheck before payment and booking commit",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-03: real-time availability/price recheck before payment and booking commit; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-04",
+    "requirement": "Guest details, policies, consent, promo codes, vouchers, gift cards",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-04: guest details, policies, consent, promo codes, vouchers, gift cards; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-05",
+    "requirement": "Partial/full deposits, pay-at-property, UPI/cards/netbanking via PSP",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-05: partial/full deposits, pay-at-property, UPI/cards/netbanking via PSP; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-06",
+    "requirement": "Payment success, failure, timeout, webhook and duplicate-callback handling",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-06: payment success, failure, timeout, webhook and duplicate-callback handling; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-07",
+    "requirement": "Booking confirmation with reference, invoice/receipt, cancellation terms",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-07: booking confirmation with reference, invoice/receipt, cancellation terms; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-08",
+    "requirement": "Self-service modify/cancel requests and refund eligibility calculations",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-08: self-service modify/cancel requests and refund eligibility calculations; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-09",
+    "requirement": "Google Analytics/Ads conversion events, campaign UTM and attribution",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-09: google Analytics/Ads conversion events, campaign UTM and attribution; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-10",
+    "requirement": "Multi-language/multi-currency display with actual settlement currency clarity",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-10: multi-language/multi-currency display with actual settlement currency clarity; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-11",
+    "requirement": "Website builder, social booking links, SEO and mobile speed fundamentals",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-11: website builder, social booking links, SEO and mobile speed fundamentals; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "C-12",
+    "requirement": "Member rates, loyalty redemption, referral codes and abandoned booking recovery",
+    "priority": "P1",
+    "sourceStage": "2",
+    "plannedStage": "S2",
+    "modules": [
+      "booking-engine",
+      "payments-refunds",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate C-12: member rates, loyalty redemption, referral codes and abandoned booking recovery; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-01",
+    "requirement": "Reservation calendar/room diary, drag-and-drop with validation",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-01: reservation calendar/room diary, drag-and-drop with validation; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-02",
+    "requirement": "Walk-in, phone, agent, group, corporate, OTA and direct reservations",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-02: walk-in, phone, agent, group, corporate, OTA and direct reservations; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-03",
+    "requirement": "Booking lifecycle: tentative, held, confirmed, in-house, checked-out, cancelled, no-show",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-03: booking lifecycle: tentative, held, confirmed, in-house, checked-out, cancelled, no-show; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-04",
+    "requirement": "Check-in/check-out, early/late charges, room move, upgrade and extension",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-04: check-in/check-out, early/late charges, room move, upgrade and extension; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-05",
+    "requirement": "Room assignment suggestions, housekeeping status, clean/dirty/inspected",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-05: room assignment suggestions, housekeeping status, clean/dirty/inspected; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-06",
+    "requirement": "Multi-room, shared-room, linked and split-stay reservations",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-06: multi-room, shared-room, linked and split-stay reservations; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-07",
+    "requirement": "Guest profiles, duplicate detection, preferences, consent and stay history",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-07: guest profiles, duplicate detection, preferences, consent and stay history; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-08",
+    "requirement": "Group check-in/out, rooming lists, room blocks, pickup and attrition",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-08: group check-in/out, rooming lists, room blocks, pickup and attrition; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-09",
+    "requirement": "Waitlist, cancellation reinstatement and deposit deadline auto-release",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-09: waitlist, cancellation reinstatement and deposit deadline auto-release; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-10",
+    "requirement": "Day-use/hourly stay, long stay, complimentary and house-use bookings",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-10: day-use/hourly stay, long stay, complimentary and house-use bookings; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-11",
+    "requirement": "Front-desk shift handover, cash drawer, lost-and-found and guest incidents",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-11: front-desk shift handover, cash drawer, lost-and-found and guest incidents; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-12",
+    "requirement": "Guest registration cards, configurable forms and document printing",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-12: guest registration cards, configurable forms and document printing; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-13",
+    "requirement": "Night audit, business date, cashier close and immutable day-close history",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-13: night audit, business date, cashier close and immutable day-close history; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "D-14",
+    "requirement": "Central reservations across properties with permission-based transfers",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S2",
+    "modules": [
+      "pms-front-desk",
+      "central-reservations",
+      "group-bookings",
+      "guest-crm"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate D-14: central reservations across properties with permission-based transfers; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-01",
+    "requirement": "Two-way reservations, modifications, cancellations, rates and availability",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate E-01: two-way reservations, modifications, cancellations, rates and availability; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-02",
+    "requirement": "OTA mapping: property, room type, rate plan, occupancy, currency and tax basis",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-02: oTA mapping: property, room type, rate plan, occupancy, currency and tax basis; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-03",
+    "requirement": "Adapter framework for Booking.com, Expedia, Agoda, MakeMyTrip, Goibibo, Airbnb and others",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate E-03: adapter framework for Booking.com, Expedia, Agoda, MakeMyTrip, Goibibo, Airbnb and others; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-04",
+    "requirement": "Per-channel rules: markup, net rates, restrictions, stop-sell and promotions",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-04: per-channel rules: markup, net rates, restrictions, stop-sell and promotions; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-05",
+    "requirement": "Message delivery queue, idempotency, retry/backoff, dead-letter queue",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-05: message delivery queue, idempotency, retry/backoff, dead-letter queue; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-06",
+    "requirement": "Webhook/polling adapters, cursor checkpoints, out-of-order event reconciliation",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-06: webhook/polling adapters, cursor checkpoints, out-of-order event reconciliation; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-07",
+    "requirement": "Per-channel sync status, last success, latency, failure alerts and incident dashboard",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Provider connection/error structure exists; no real sync/latency/alerts.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-07: per-channel sync status, last success, latency, failure alerts and incident dashboard; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-08",
+    "requirement": "Full-year ARI horizon, unmapped-room warnings, future sellability checks",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-08: full-year ARI horizon, unmapped-room warnings, future sellability checks; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-09",
+    "requirement": "Manual reconciliation, resync, replay and OTA extranet comparison tools",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-09: manual reconciliation, resync, replay and OTA extranet comparison tools; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-10",
+    "requirement": "OTA content/photos/amenities sync only when supported by partner APIs",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate E-10: oTA content/photos/amenities sync only when supported by partner APIs; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-11",
+    "requirement": "B2B bed banks, tour operators, GDS and wholesale allocations where contracted",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate E-11: b2B bed banks, tour operators, GDS and wholesale allocations where contracted; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-12",
+    "requirement": "Channel commission, taxes, payout, reconciliation and source attribution",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-12: channel commission, taxes, payout, reconciliation and source attribution; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-13",
+    "requirement": "Connection onboarding, authorization, certification evidence and audit trail",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Provider catalogue exists; authorization and certification evidence absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-13: connection onboarding, authorization, certification evidence and audit trail; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "E-14",
+    "requirement": "Do not advertise live OTA support before each connection is approved and tested",
+    "priority": "P1",
+    "sourceStage": "4",
+    "plannedStage": "S4",
+    "modules": [
+      "channel-manager",
+      "ota-mapping",
+      "gds-wholesalers",
+      "ota-reconciliation",
+      "integrations-api"
+    ],
+    "owner": "Distribution engineering",
+    "auditStatus": "completed_and_tested",
+    "auditEvidence": "Unreleased catalogue and fail-closed handler tests; no live-provider claims.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate E-14: do not advertise live OTA support before each connection is approved and tested; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-01",
+    "requirement": "Occupancy, ADR, RevPAR, TRevPAR, GOPPAR where financial inputs exist",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-01: occupancy, ADR, RevPAR, TRevPAR, GOPPAR where financial inputs exist; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-02",
+    "requirement": "Pickup, booking pace, lead time, length of stay, cancellation and no-show trends",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-02: pickup, booking pace, lead time, length of stay, cancellation and no-show trends; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-03",
+    "requirement": "Demand forecast by date, room type, segment, channel and property",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-03: demand forecast by date, room type, segment, channel and property; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-04",
+    "requirement": "Competitor rate shopping and parity monitoring from licensed data",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate F-04: competitor rate shopping and parity monitoring from licensed data; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-05",
+    "requirement": "Rate recommendations with confidence, approval and guardrails",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-05: rate recommendations with confidence, approval and guardrails; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-06",
+    "requirement": "Dynamic pricing rules, minimum/maximum caps and override history",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-06: dynamic pricing rules, minimum/maximum caps and override history; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-07",
+    "requirement": "Revenue heatmaps, holiday/local event overlays and budget vs actual",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-07: revenue heatmaps, holiday/local event overlays and budget vs actual; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-08",
+    "requirement": "Channel mix, net revenue after commissions and cost of acquisition",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-08: channel mix, net revenue after commissions and cost of acquisition; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-09",
+    "requirement": "Forecast backtesting, alerts and explainable AI pricing decisions",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-09: forecast backtesting, alerts and explainable AI pricing decisions; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "F-10",
+    "requirement": "Rate fences, corporate rates, promotions and package profitability",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "reports-analytics",
+      "revenue-management",
+      "rate-shopping",
+      "rate-management",
+      "dynamic-pricing"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate F-10: rate fences, corporate rates, promotions and package profitability; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-01",
+    "requirement": "Unified folio: room, F&B, activity, tax, fees, discounts, adjustments",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-01: unified folio: room, F&B, activity, tax, fees, discounts, adjustments; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-02",
+    "requirement": "Split bills, multiple payers, corporate billing and city ledger",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-02: split bills, multiple payers, corporate billing and city ledger; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-03",
+    "requirement": "Deposits, pre-authorizations where PSP supports, refunds and partial refunds",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-03: deposits, pre-authorizations where PSP supports, refunds and partial refunds; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-04",
+    "requirement": "Payment links, payment reminders, reconciliation and settlement status",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-04: payment links, payment reminders, reconciliation and settlement status; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-05",
+    "requirement": "Chargebacks/disputes with evidence and audit records",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-05: chargebacks/disputes with evidence and audit records; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-06",
+    "requirement": "India GST invoices, credit/debit notes and configurable tax rules",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-06: india GST invoices, credit/debit notes and configurable tax rules; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-07",
+    "requirement": "GSTIN capture, B2B/B2C distinctions, place-of-supply review and exports",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-07: gSTIN capture, B2B/B2C distinctions, place-of-supply review and exports; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-08",
+    "requirement": "Tax rate effective dates, exemptions and tax-on-tax handling where relevant",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-08: tax rate effective dates, exemptions and tax-on-tax handling where relevant; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-09",
+    "requirement": "Cash/bank/UPI/card ledger, petty cash, expense and vendor bills",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-09: cash/bank/UPI/card ledger, petty cash, expense and vendor bills; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-10",
+    "requirement": "AR/AP, receivables aging, agent commissions and payout reconciliation",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-10: aR/AP, receivables aging, agent commissions and payout reconciliation; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-11",
+    "requirement": "Night audit, accounting journal export and later full accounting module",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-11: night audit, accounting journal export and later full accounting module; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "G-12",
+    "requirement": "Subscription billing, plan entitlements, trial, invoice and dunning for StayPunch SaaS",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": [
+      "payments-refunds",
+      "accounting-gst",
+      "corporate-ledger",
+      "subscription-billing"
+    ],
+    "owner": "Finance engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Plan/trial/subscription assignments exist; invoicing, charging and dunning absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate G-12: subscription billing, plan entitlements, trial, invoice and dunning for StayPunch SaaS; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-01",
+    "requirement": "Housekeeping board, assignments, shifts, inspections and checklists",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-01: housekeeping board, assignments, shifts, inspections and checklists; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-02",
+    "requirement": "Room clean/dirty/inspected/out-of-service state transitions",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-02: room clean/dirty/inspected/out-of-service state transitions; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-03",
+    "requirement": "Guest requests with SLA, priority, escalation and internal comments",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-03: guest requests with SLA, priority, escalation and internal comments; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-04",
+    "requirement": "Maintenance tickets, preventive schedules, asset register and downtime",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-04: maintenance tickets, preventive schedules, asset register and downtime; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-05",
+    "requirement": "Linen/laundry stock, minibar consumption and replenishment",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-05: linen/laundry stock, minibar consumption and replenishment; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-06",
+    "requirement": "Lost-and-found, incident logs, staff task chat and handover",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-06: lost-and-found, incident logs, staff task chat and handover; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "H-07",
+    "requirement": "Mobile task execution, photo evidence and offline queue safeguards",
+    "priority": "P1/P2",
+    "sourceStage": "3 / 6",
+    "plannedStage": "S3",
+    "modules": ["housekeeping", "maintenance", "qr-guest-services"],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate H-07: mobile task execution, photo evidence and offline queue safeguards; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-01",
+    "requirement": "Restaurant POS, tables, orders, kitchen order tickets and menu taxes",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-01: restaurant POS, tables, orders, kitchen order tickets and menu taxes; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-02",
+    "requirement": "Room-charge posting to guest folio with reversal and settlement",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-02: room-charge posting to guest folio with reversal and settlement; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-03",
+    "requirement": "QR in-room ordering, guest room verification and service tracking",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-03: qR in-room ordering, guest room verification and service tracking; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-04",
+    "requirement": "Buffet, meal plan, package entitlements and consumption rules",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-04: buffet, meal plan, package entitlements and consumption rules; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-05",
+    "requirement": "Activities, spa, equipment, transport, cabana and venue inventory",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-05: activities, spa, equipment, transport, cabana and venue inventory; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-06",
+    "requirement": "Capacity slots, instructor/staff/resource conflicts and waivers",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-06: capacity slots, instructor/staff/resource conflicts and waivers; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-07",
+    "requirement": "Banquet/wedding/event CRM, quotations, proposals and contracts",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-07: banquet/wedding/event CRM, quotations, proposals and contracts; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-08",
+    "requirement": "Group blocks, catering, deposits, event orders and profitability",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-08: group blocks, catering, deposits, event orders and profitability; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "I-09",
+    "requirement": "Retail POS, inventory, stock adjustments and outlet-level reporting",
+    "priority": "P2",
+    "sourceStage": "6",
+    "plannedStage": "S6",
+    "modules": [
+      "restaurant-pos",
+      "resort-activities",
+      "events-banquets",
+      "qr-guest-services"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate I-09: retail POS, inventory, stock adjustments and outlet-level reporting; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-01",
+    "requirement": "WhatsApp template messaging via approved provider, consent and opt-out",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate J-01: whatsApp template messaging via approved provider, consent and opt-out; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-02",
+    "requirement": "Email/SMS/WhatsApp booking, pre-arrival, during-stay, post-stay journeys",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_external_configuration",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Production email/SMS/WhatsApp configuration and consent rules remain outstanding.",
+    "acceptance": "Demonstrate J-02: email/SMS/WhatsApp booking, pre-arrival, during-stay, post-stay journeys; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "Templates/provider architecture cover account messages and future booking/cancellation responsibilities without operational producers.",
+      "evidence": "lib/email/messages.ts; docs/email-readiness.md",
+      "remaining": "Real email/SMS/WhatsApp providers, consent and operational journey implementation.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "J-03",
+    "requirement": "Unified inbox for permitted OTA, email, WhatsApp and guest messages",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate J-03: unified inbox for permitted OTA, email, WhatsApp and guest messages; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-04",
+    "requirement": "Guest segments, repeat-stay preferences and marketing attribution",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-04: guest segments, repeat-stay preferences and marketing attribution; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-05",
+    "requirement": "Review requests, feedback surveys, issue resolution and reputation insights",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-05: review requests, feedback surveys, issue resolution and reputation insights; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-06",
+    "requirement": "Loyalty points, tiers, referral, vouchers, member-only rates",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-06: loyalty points, tiers, referral, vouchers, member-only rates; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-07",
+    "requirement": "AI chatbot with human handoff, grounded property FAQs and guardrails",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-07: aI chatbot with human handoff, grounded property FAQs and guardrails; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-08",
+    "requirement": "AI-assisted replies, translation and knowledge-base management",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-08: aI-assisted replies, translation and knowledge-base management; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-09",
+    "requirement": "Guest self-service portal, digital check-in/KYC where lawful",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate J-09: guest self-service portal, digital check-in/KYC where lawful; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "J-10",
+    "requirement": "Kiosk, digital keys and smart-lock integrations as optional hardware features",
+    "priority": "P1/P2",
+    "sourceStage": "5 / 6",
+    "plannedStage": "S5",
+    "modules": [
+      "guest-crm",
+      "qr-guest-services",
+      "whatsapp-messaging",
+      "whatsapp-automation",
+      "ai-automation",
+      "ai-chatbot",
+      "loyalty-promotions",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate J-10: kiosk, digital keys and smart-lock integrations as optional hardware features; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-01",
+    "requirement": "Corporate and agent accounts, contracted net rates and commission schedules",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-01: corporate and agent accounts, contracted net rates and commission schedules; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-02",
+    "requirement": "GDS and wholesale distribution subject to commercial agreements",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate K-02: gDS and wholesale distribution subject to commercial agreements; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-03",
+    "requirement": "Google Hotel Ads/free booking links through approved partner or own approved integration",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate K-03: google Hotel Ads/free booking links through approved partner or own approved integration; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-04",
+    "requirement": "Price feed accuracy, hotel content, landing-page parity and eligibility monitoring",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-04: price feed accuracy, hotel content, landing-page parity and eligibility monitoring; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-05",
+    "requirement": "Google Ads attribution, direct-booking ROAS and conversion funnels",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-05: google Ads attribution, direct-booking ROAS and conversion funnels; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-06",
+    "requirement": "Promotions, coupons, email campaigns and abandoned-cart recovery",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-06: promotions, coupons, email campaigns and abandoned-cart recovery; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-07",
+    "requirement": "Hotel website builder, landing pages, SEO schema and AI-search discoverability",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-07: hotel website builder, landing pages, SEO schema and AI-search discoverability; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-08",
+    "requirement": "OTA content localization, channel promotions and content health score",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-08: oTA content localization, channel promotions and content health score; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "K-09",
+    "requirement": "Group/event sales pipeline and sales-team performance",
+    "priority": "P2",
+    "sourceStage": "5",
+    "plannedStage": "S5",
+    "modules": [
+      "group-bookings",
+      "rate-shopping",
+      "google-hotel-ads",
+      "gds-wholesalers",
+      "corporate-ledger",
+      "marketing-reviews"
+    ],
+    "owner": "Reservations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate K-09: group/event sales pipeline and sales-team performance; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-01",
+    "requirement": "Daily manager dashboard and owner multi-property rollups",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Foundation counts exist; operational daily metrics and group rollups absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-01: daily manager dashboard and owner multi-property rollups; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-02",
+    "requirement": "Occupancy, ARR/ADR, RevPAR, net ADR, pickup, pace and forecast",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-02: occupancy, ARR/ADR, RevPAR, net ADR, pickup, pace and forecast; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-03",
+    "requirement": "Booking sources, cancellations, no-shows, lead time and LOS",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-03: booking sources, cancellations, no-shows, lead time and LOS; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-04",
+    "requirement": "Channel commissions, payout delays, taxes, payment failures",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-04: channel commissions, payout delays, taxes, payment failures; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-05",
+    "requirement": "Housekeeping productivity, maintenance SLA, F&B/experience sales",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-05: housekeeping productivity, maintenance SLA, F&B/experience sales; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-06",
+    "requirement": "Revenue by room type, rate plan, segment, property and date",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-06: revenue by room type, rate plan, segment, property and date; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-07",
+    "requirement": "Custom reports, CSV/XLSX export, scheduled email and permission filtering",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-07: custom reports, CSV/XLSX export, scheduled email and permission filtering; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "L-08",
+    "requirement": "Source-of-truth definitions, reconciled business date and data lineage",
+    "priority": "P1",
+    "sourceStage": "3",
+    "plannedStage": "S3",
+    "modules": ["dashboard", "reports-analytics", "revenue-management"],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate L-08: source-of-truth definitions, reconciled business date and data lineage; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-01",
+    "requirement": "Tenant-scoped authorization with role and property-level permissions",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Owner/manager/staff checks and selected tenant RLS exist; broader operational roles and database grant hardening needed.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-01: tenant-scoped authorization with role and property-level permissions; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "All-table RLS, private helpers, restricted server/mailer roles and mailbox-proof invitation guards.",
+      "evidence": "tests/integration/readiness.test.ts; tests/e2e/account.spec.ts",
+      "remaining": "Expanded operational roles and full module-level permission coverage.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "M-02",
+    "requirement": "MFA/2FA, session revocation, suspicious-login alerts and device controls",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Password resets revoke sessions; no self-service session controls, MFA or alerts.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-02: mFA/2FA, session revocation, suspicious-login alerts and device controls; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "Self-service session listing/revocation and sign-out-all, plus verification and existing reset revocation.",
+      "evidence": "tests/e2e/account.spec.ts",
+      "remaining": "MFA, device identification and suspicious-login alerts.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "M-03",
+    "requirement": "Encryption in transit/at rest, key rotation, secrets management and audit logs",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Password/token hashing, headers and audit exist; verified TLS parity, at-rest operations and key rotation incomplete.",
+    "externalDependency": "Production TLS, at-rest controls and vault/rotation decisions need deployment configuration.",
+    "acceptance": "Demonstrate M-03: encryption in transit/at rest, key rotation, secrets management and audit logs; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "Shared verified-TLS configuration and URL-override rejection; private data/helper ACL hardening.",
+      "evidence": "tests/database-config.test.ts; tests/integration/readiness.test.ts",
+      "remaining": "Actual hosted TLS/at-rest controls, key rotation and production secrets operations.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "M-04",
+    "requirement": "Sensitive ID and payment data minimization, retention and deletion workflows",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-04: sensitive ID and payment data minimization, retention and deletion workflows; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-05",
+    "requirement": "RBAC for owner, chain admin, property admin, front desk, accounts, housekeeping, support",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Three fixed property roles; no chain/front-desk/accounts/housekeeping/support role matrix.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-05: rBAC for owner, chain admin, property admin, front desk, accounts, housekeeping, support; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-06",
+    "requirement": "Public versioned APIs, OAuth/API keys, webhooks, rate limits and developer docs",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Internal same-origin routes and account throttles exist; no public versioned API/OAuth/webhooks.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-06: public versioned APIs, OAuth/API keys, webhooks, rate limits and developer docs; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-07",
+    "requirement": "Transactional outbox, event processing, retries, DLQ and observability",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Basic email outbox exists; worker least privilege, retries/DLQ and general event outbox absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-07: transactional outbox, event processing, retries, DLQ and observability; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "Email provider boundary, durable attempts/backoff, terminal failed state, idempotency contract and explicit simulation.",
+      "evidence": "tests/email.test.ts; tests/integration/readiness.test.ts",
+      "remaining": "General operational event outbox, queue observability, real provider/bounce tests and audited replay controls.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "M-08",
+    "requirement": "Backup, point-in-time restore, disaster recovery, RPO/RTO objectives",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Deployment guidance exists; no recorded automated restore exercise.",
+    "externalDependency": "Supabase backup/PITR availability, retention and RPO/RTO need owner decisions.",
+    "acceptance": "Demonstrate M-08: backup, point-in-time restore, disaster recovery, RPO/RTO objectives; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "Disposable backup/restore reconciles 32 tables, policy/helper ACLs and tenant isolation.",
+      "evidence": "scripts/restore-drill.ts; docs/backup-restore.md",
+      "remaining": "Production PITR/retention configuration, approved recovery targets and measured production-scale drill.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "M-09",
+    "requirement": "Monitoring, structured logs, trace IDs, SLOs and alerting",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Generic error logging exists; no trace IDs/SLOs/alerts.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-09: monitoring, structured logs, trace IDs, SLOs and alerting; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-10",
+    "requirement": "Data export, migration, tenant offboarding and support impersonation controls",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-10: data export, migration, tenant offboarding and support impersonation controls; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-11",
+    "requirement": "Responsive PWA/mobile admin, accessibility and performance budgets",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "Responsive website/workspaces and sample axe checks exist; PWA/offline/performance budgets absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-11: responsive PWA/mobile admin, accessibility and performance budgets; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "M-12",
+    "requirement": "Automated tests, CI/CD, feature flags, staging, canary/rollback and audit evidence",
+    "priority": "P0",
+    "sourceStage": "1",
+    "plannedStage": "S1A",
+    "modules": [
+      "staff-roles",
+      "multi-property",
+      "integrations-api",
+      "security-audit",
+      "settings"
+    ],
+    "owner": "Platform engineering",
+    "auditStatus": "partially_implemented",
+    "auditEvidence": "CI, tests and fail-closed feature gates exist; staging/canary and full pilot evidence absent.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate M-12: automated tests, CI/CD, feature flags, staging, canary/rollback and audit evidence; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion.",
+    "stageS1A": {
+      "implemented": "CI now includes hosted-role simulations, populated-baseline upgrade, recovery and verification/session tests.",
+      "evidence": "tests/integration/upgrade.test.ts; .github/workflows/validate.yml",
+      "remaining": "Staging/canary/rollback operations and full pilot sign-off.",
+      "moduleReleased": false
+    }
+  },
+  {
+    "id": "N-01",
+    "requirement": "Owner portal for villa/vacation rental managers and owner statements",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-01: owner portal for villa/vacation rental managers and owner statements; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-02",
+    "requirement": "Vacation ownership and timeshare accounting where relevant",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-02: vacation ownership and timeshare accounting where relevant; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-03",
+    "requirement": "Parking and vehicle services, airport transfer, concierge itinerary",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-03: parking and vehicle services, airport transfer, concierge itinerary; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-04",
+    "requirement": "Self-service kiosks, room access and IoT/smart-lock interfaces",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate N-04: self-service kiosks, room access and IoT/smart-lock interfaces; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-05",
+    "requirement": "Franchise hierarchy, brand standards and central configuration",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-05: franchise hierarchy, brand standards and central configuration; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-06",
+    "requirement": "International localization and regional fiscalization connectors",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-06: international localization and regional fiscalization connectors; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-07",
+    "requirement": "Fraud scoring, risk controls and consented guest identity verification",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "not_implemented",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "None required to begin local implementation; operational release may require pilot/legal review.",
+    "acceptance": "Demonstrate N-07: fraud scoring, risk controls and consented guest identity verification; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  },
+  {
+    "id": "N-08",
+    "requirement": "Marketplace for certified integrations and partner revenue share",
+    "priority": "P3",
+    "sourceStage": "6+",
+    "plannedStage": "S6",
+    "modules": [
+      "resort-activities",
+      "qr-guest-services",
+      "corporate-ledger",
+      "multi-property",
+      "integrations-api",
+      "security-audit"
+    ],
+    "owner": "Operations engineering",
+    "auditStatus": "blocked_by_third_party_approval",
+    "auditEvidence": "No operational implementation in audited main.",
+    "externalDependency": "Provider contract/API approval and sandbox certification required.",
+    "acceptance": "Demonstrate N-08: marketplace for certified integrations and partner revenue share; verify mapped module acceptance criteria, tenant/permission denials and applicable failure/replay cases; record tests and pilot sign-off before completion."
+  }
+]

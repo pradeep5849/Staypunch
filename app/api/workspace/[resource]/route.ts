@@ -1,3 +1,4 @@
+import { enqueueEmail, accountLink } from "../../../../lib/email/messages";
 import { z } from "zod";
 import { transaction, audit } from "../../../../lib/db";
 import {
@@ -58,15 +59,11 @@ export async function POST(
           "INSERT INTO staff_invitations(property_id,email,role,token_hash,invited_by,expires_at) VALUES($1,$2,$3,$4,$5,now()+interval '3 days')",
           [pid, d.email, d.role, hash(secret), u.id],
         );
-        if (!process.env.APP_URL) throw new Error("APP_URL missing");
-        await db.query(
-          "INSERT INTO email_outbox(recipient,subject,body) VALUES($1,$2,$3)",
-          [
-            d.email,
-            "Invitation to StayPunch360",
-            `${process.env.APP_URL}/invite?token=${secret}`,
-          ],
-        );
+        await enqueueEmail(db, {
+          kind: "staff_invitation",
+          recipient: d.email,
+          link: accountLink("/invite", secret),
+        });
       } else if (resource === "support") {
         const d = z
           .object({

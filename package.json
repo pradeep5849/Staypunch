@@ -14,7 +14,10 @@
     "migrate": "tsx scripts/migrate.ts",
     "bootstrap:admin": "tsx scripts/bootstrap-admin.ts",
     "email:deliver": "tsx scripts/deliver-email.ts",
-    "format:check": "prettier --check app components lib scripts tests *.ts *.mjs *.json docs README.md"
+    "format:check": "prettier --check app components lib scripts tests *.ts *.mjs *.json docs README.md",
+    "db:check": "tsx scripts/check-database.ts",
+    "db:restore-drill": "tsx scripts/restore-drill.ts",
+    "db:grants": "tsx scripts/apply-grants.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

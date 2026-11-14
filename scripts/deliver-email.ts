@@ -1,55 +1,16 @@
-// A separately scheduled operator process. Never expose this queue via public APIs.
 import { Pool } from "pg";
-const url = process.env.EMAIL_DELIVERY_WEBHOOK;
-const credential = process.env.EMAIL_DELIVERY_TOKEN;
-if (!url || !credential || new URL(url).protocol !== "https:")
-  throw new Error(
-    "Configure an HTTPS email delivery adapter and its credential",
-  );
-if (!process.env.MIGRATION_DATABASE_URL)
-  throw new Error("Operator database URL is required for the delivery worker");
-const pool = new Pool({ connectionString: process.env.MIGRATION_DATABASE_URL });
-const db = await pool.connect();
+import { databaseConfig } from "../lib/database-config";
+import { webhookProvider } from "../lib/email/provider";
+import { deliverOne } from "../lib/email/worker";
+const provider = webhookProvider();
+const pool = new Pool(databaseConfig("email"));
 try {
-  for (let i = 0; i < 50; i++) {
-    await db.query("BEGIN");
-    try {
-      const mail = (
-        await db.query(
-          "SELECT * FROM email_outbox WHERE status='queued' ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT 1",
-        )
-      ).rows[0];
-      if (!mail) {
-        await db.query("COMMIT");
-        break;
-      }
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${credential}`,
-          "Content-Type": "application/json",
-          "Idempotency-Key": mail.id,
-        },
-        body: JSON.stringify({
-          id: mail.id,
-          to: mail.recipient,
-          subject: mail.subject,
-          text: mail.body,
-        }),
-        signal: AbortSignal.timeout(15000),
-      });
-      if (!response.ok) throw new Error("Delivery adapter rejected email");
-      await db.query(
-        "UPDATE email_outbox SET status='sent',body='[delivered token redacted]' WHERE id=$1",
-        [mail.id],
-      );
-      await db.query("COMMIT");
-    } catch (e) {
-      await db.query("ROLLBACK");
-      throw e;
-    }
-  }
+  let processed = 0;
+  for (; processed < 50; processed++)
+    if (!(await deliverOne(pool, provider))) break;
+  console.log(
+    `Email batch processed: ${processed}. Check queue states for provider acceptance or retry outcomes.`,
+  );
 } finally {
-  db.release();
   await pool.end();
 }

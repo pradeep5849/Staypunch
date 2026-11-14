@@ -1,12 +1,8 @@
+import { databaseConfig } from "../lib/database-config";
 import { Pool } from "pg";
 import { readdir, readFile } from "node:fs/promises";
 import { modules } from "../lib/modules";
-if (!process.env.MIGRATION_DATABASE_URL && !process.env.DATABASE_URL)
-  throw new Error("A migration database URL is required");
-const pool = new Pool({
-  connectionString:
-    process.env.MIGRATION_DATABASE_URL ?? process.env.DATABASE_URL,
-});
+const pool = new Pool(databaseConfig("migration"));
 const db = await pool.connect();
 try {
   await db.query("SELECT pg_advisory_lock(360)");

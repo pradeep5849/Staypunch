@@ -48,8 +48,10 @@ jobs:
             exit 1
           fi
           umask 077
-          printf '%s\\n' "$DATABASE_CA_PEM" > "$DATABASE_CA_CERT_FILE"
-          if ! openssl x509 -in "$DATABASE_CA_CERT_FILE" -noout >/dev/null; then
+          ca_file="$RUNNER_TEMP/staypunch-database-ca.pem"
+          printf '%s\\n' "$DATABASE_CA_PEM" > "$ca_file"
+          echo "DATABASE_CA_CERT_FILE=$ca_file" >> "$GITHUB_ENV"
+          if ! openssl x509 -in "$ca_file" -noout >/dev/null; then
             echo "::error::The configured database CA certificate is not a valid PEM certificate."
             exit 1
           fi

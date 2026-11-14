@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Brand } from "./ui";
 import { Logout } from "./forms";
+import { modules } from "../lib/modules";
 export function Workspace({
   admin = false,
   section,
@@ -60,11 +61,34 @@ export function Workspace({
                   ]
                 }
               </span>
-              {label}
+              {admin && label === "Customers" ? "Users" : label}
               {label === "Modules" && <span className="nav-dot" />}
             </Link>
           ))}
         </nav>
+        <details className="roadmap-navigation">
+          <summary>All 39 planned modules</summary>
+          <nav aria-label="Planned modules">
+            {[...new Set(modules.map((module) => module.group))].map(
+              (group) => (
+                <details key={group}>
+                  <summary>{group}</summary>
+                  {modules
+                    .filter((module) => module.group === group)
+                    .map((module) => (
+                      <Link
+                        key={module.id}
+                        href={`${base}/modules#${module.id}`}
+                      >
+                        <span>{module.name}</span>
+                        <small>Coming Soon</small>
+                      </Link>
+                    ))}
+                </details>
+              ),
+            )}
+          </nav>
+        </details>
         <div className="sidebar-foot">
           <div className="avatar">{name.slice(0, 1).toUpperCase()}</div>
           <div>

@@ -481,7 +481,7 @@ export default async function Customer({
       {section === "modules" && (
         <div className="module-grid">
           {modules.map((m) => (
-            <article key={m.id} className="module-card">
+            <article key={m.id} id={m.id} className="module-card">
               <div>
                 <span className="eyebrow">{m.group}</span>
                 <Badge />

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Brand } from "../../components/ui";
 import { Form, Field } from "../../components/forms";
-export default function Login() {
+import { redirect } from "next/navigation";
+import { actor } from "../../lib/security";
+export default async function Login() {
+  const user = await actor();
+  if (user) redirect(user.platform_role === "super_admin" ? "/admin" : "/app");
   return (
     <main className="auth-layout">
       <div className="auth-story">
@@ -22,10 +26,23 @@ export default function Login() {
         <div className="auth-card">
           <p className="eyebrow">WELCOME BACK</p>
           <h1>Good to see you.</h1>
-          <p className="muted">Sign in to your StayPunch360 account.</p>
+          <p className="muted">
+            Sign in to your StayPunch360 account. Authorized platform
+            administrators go directly to the Super Admin dashboard.
+          </p>
           <Form endpoint="/api/auth/login" label="Sign in →">
-            <Field label="Email address" name="email" type="email" />
-            <Field label="Password" name="password" type="password" />
+            <Field
+              label="Email address"
+              name="email"
+              type="email"
+              autoComplete="username"
+            />
+            <Field
+              label="Password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+            />
             <Link href="/reset-password" className="small">
               Forgot password?
             </Link>

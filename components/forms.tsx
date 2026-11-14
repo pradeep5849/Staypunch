@@ -88,6 +88,7 @@ export function Field({
   min,
   max,
   placeholder,
+  autoComplete,
 }: {
   label: string;
   name: string;
@@ -97,6 +98,7 @@ export function Field({
   min?: number;
   max?: number;
   placeholder?: string;
+  autoComplete?: string;
 }) {
   return (
     <label>
@@ -104,6 +106,7 @@ export function Field({
       <input
         name={name}
         type={type}
+        autoComplete={autoComplete}
         step={type === "number" ? "any" : undefined}
         defaultValue={value}
         required={required}

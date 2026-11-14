@@ -1,7 +1,34 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { databaseConfig } from "../lib/database-config";
+import { rootCertificates } from "node:tls";
+import { normalizeCaPem } from "../lib/database-ca.mjs";
 const local = "postgresql://stay_app@localhost:5432/staypunch";
+test("managed-host CA supports escaped PEM and preserves certificate and hostname verification", () => {
+  const pem = rootCertificates[0];
+  const ssl = databaseConfig("runtime", {
+    DATABASE_URL: "postgresql://stay_app@db.example.invalid/postgres",
+    DATABASE_CA_PEM: pem.replaceAll("\n", "\\n"),
+  }).ssl;
+  assert.deepEqual(ssl, { rejectUnauthorized: true, ca: normalizeCaPem(pem) });
+  assert.throws(
+    () =>
+      databaseConfig("runtime", {
+        DATABASE_URL: local,
+        DATABASE_CA_PEM: "bad",
+      }),
+    /valid PEM/,
+  );
+  assert.throws(
+    () =>
+      databaseConfig("runtime", {
+        DATABASE_URL: local,
+        DATABASE_CA_PEM: pem,
+        DATABASE_CA_CERT_FILE: "/unused",
+      }),
+    /only one/,
+  );
+});
 test("database roles require independent connection variables and bounded pool settings", () => {
   assert.throws(
     () => databaseConfig("migration", { DATABASE_URL: local }),

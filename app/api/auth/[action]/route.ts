@@ -57,7 +57,7 @@ export async function POST(
           db.query("DELETE FROM sessions WHERE token_hash=$1", [hash(value)]),
         );
       (await cookies()).delete(sessionCookie);
-      return Response.json({ ok: true });
+      return Response.json({ ok: true, redirect: "/login" });
     }
     if (action === "login") {
       const data = credentials.parse(body);

@@ -33,6 +33,7 @@ Every roadmap module remains Coming Soon. No booking, inventory transaction, pay
 - [Security and MFA architecture](docs/security.md)
 - [Release gates](docs/release-gates.md)
 - [Deployment and Hostinger requirements](docs/deployment.md)
+- [Super Admin login and production setup](docs/super-admin-readiness.md)
 - [Requirements and development status](docs/status.md)
 
 Production deployment, DNS changes and merging require explicit approval. This implementation does not perform them.

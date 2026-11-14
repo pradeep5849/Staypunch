@@ -885,6 +885,7 @@ details[open] summary {
   background: #f5f7f2;
 }
 .workspace-sidebar {
+  overflow-y: auto;
   width: 235px;
   flex-shrink: 0;
   padding: 30px 18px 20px;
@@ -932,6 +933,28 @@ details[open] summary {
   font-size: 17px;
   width: 18px;
   text-align: center;
+  color: #586c50;
+}
+.roadmap-navigation {
+  margin: 16px 0;
+  font-size: 12px;
+}
+.roadmap-navigation summary {
+  cursor: pointer;
+  padding: 10px;
+  color: #3d643b;
+}
+.workspace-sidebar .roadmap-navigation nav {
+  display: block;
+  overflow: visible;
+}
+.workspace-sidebar .roadmap-navigation a {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  white-space: normal;
+}
+.roadmap-navigation small {
   color: #586c50;
 }
 .nav-dot {

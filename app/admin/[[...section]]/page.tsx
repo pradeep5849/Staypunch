@@ -508,7 +508,7 @@ export default async function Admin({
           </div>
           <div className="module-grid">
             {d.features.map((f) => (
-              <Panel key={f.id} title={f.name}>
+              <Panel key={f.id} id={f.id} title={f.name}>
                 <Badge />
                 <p className="small muted">
                   {f.category} · {f.id}

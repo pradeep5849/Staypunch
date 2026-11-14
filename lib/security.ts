@@ -2,6 +2,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { cookies } from "next/headers";
 import type { PoolClient } from "pg";
 import { transaction } from "./db";
+import { validRequestOrigin } from "./request-origin";
 export class HttpError extends Error {
   constructor(
     public status: number,
@@ -95,9 +96,7 @@ export async function propertyAccess(
   return row;
 }
 export function checkOrigin(req: Request) {
-  const origin = req.headers.get("origin");
-  const expected = new URL(req.url).origin;
-  if (!origin || origin !== expected)
+  if (!validRequestOrigin(req))
     throw new HttpError(403, "Invalid request origin");
 }
 export async function rateLimit(

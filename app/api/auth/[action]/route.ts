@@ -1,3 +1,5 @@
+import { queueVerification } from "../../../../lib/account";
+import { enqueueEmail, accountLink } from "../../../../lib/email/messages";
 import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 import { compare, hash as passwordHash } from "bcryptjs";
@@ -5,6 +7,7 @@ import { z } from "zod";
 import { transaction, audit } from "../../../../lib/db";
 import {
   actor,
+  requireActor,
   checkOrigin,
   cookieOptions,
   hash,
@@ -32,12 +35,19 @@ export async function POST(
       typeof body.email === "string"
         ? body.email.trim().toLowerCase()
         : "anonymous";
+    const selfActions = [
+      "logout",
+      "verify-request",
+      "revoke-session",
+      "revoke-sessions",
+    ];
+    const self = selfActions.includes(action) ? await requireActor() : null;
     // Commit throttling independently, including failed attempts. Never trust client-supplied IP headers.
     await transaction(null, (db) =>
       rateLimit(
         db,
-        `auth:${action}:${address}`,
-        action === "reset-request" ? 3 : 10,
+        `auth:${action}:${self?.id ?? (["reset", "verify-email"].includes(action) && typeof body.token === "string" ? hash(body.token) : address)}`,
+        ["reset-request", "verify-request"].includes(action) ? 3 : 10,
       ),
     );
     if (action === "logout") {
@@ -103,10 +113,10 @@ export async function POST(
           );
         await db.query("SELECT set_config('app.user_id',$1,true)", [u.id]);
         const invitation = (
-          await db.query("SELECT * FROM accept_staff_invitation($1,$2)", [
-            hash(data.token),
-            u.id,
-          ])
+          await db.query(
+            "SELECT * FROM stay_private.accept_staff_invitation($1,$2)",
+            [hash(data.token), u.id],
+          )
         ).rows[0];
         if (!invitation)
           throw new HttpError(
@@ -177,6 +187,7 @@ export async function POST(
           "INSERT INTO sessions(token_hash,user_id,expires_at) VALUES($1,$2,now()+interval '7 days')",
           [hash(secret), u.id],
         );
+        await queueVerification(db, u.id);
         await audit(db, u.id, "property.register", "property", property.id);
       });
       (await cookies()).set(sessionCookie, secret, cookieOptions);
@@ -187,7 +198,10 @@ export async function POST(
       const secret = token();
       await transaction(null, async (db) => {
         const u = (
-          await db.query("SELECT id FROM users WHERE email=$1", [address])
+          await db.query(
+            "SELECT id FROM users WHERE email=$1 AND status='active' FOR UPDATE",
+            [address],
+          )
         ).rows[0];
         if (u) {
           await db.query(
@@ -198,16 +212,11 @@ export async function POST(
             "INSERT INTO auth_tokens(token_hash,user_id,purpose,expires_at) VALUES($1,$2,'reset',now()+interval '30 minutes')",
             [hash(secret), u.id],
           );
-          const base = process.env.APP_URL;
-          if (!base) throw new Error("APP_URL missing");
-          await db.query(
-            "INSERT INTO email_outbox(recipient,subject,body) VALUES($1,$2,$3)",
-            [
-              address,
-              "Reset your StayPunch360 password",
-              `${base}/reset-password?token=${secret}`,
-            ],
-          );
+          await enqueueEmail(db, {
+            kind: "password_reset",
+            recipient: address,
+            link: accountLink("/reset-password", secret),
+          });
         }
       });
       return Response.json({
@@ -237,9 +246,81 @@ export async function POST(
           u.user_id,
         ]);
         await db.query("DELETE FROM sessions WHERE user_id=$1", [u.user_id]);
+        const account = (
+          await db.query("SELECT email FROM users WHERE id=$1", [u.user_id])
+        ).rows[0];
+        await enqueueEmail(db, {
+          kind: "account_notification",
+          recipient: account.email,
+          event: "password_changed",
+        });
         await audit(db, u.user_id, "auth.password_reset", "user", u.user_id);
       });
       return Response.json({ ok: true, redirect: "/login" });
+    }
+    if (action === "verify-request") {
+      await transaction(self!.id, (db) => queueVerification(db, self!.id));
+      return Response.json({
+        ok: true,
+        message:
+          "Verification email queued if your address needs verification. Delivery has not been confirmed.",
+      });
+    }
+    if (action === "verify-email") {
+      const value = z.string().length(64).parse(body.token);
+      await transaction(null, async (db) => {
+        const record = (
+          await db.query(
+            "DELETE FROM auth_tokens t USING users u WHERE t.user_id=u.id AND u.status='active' AND t.token_hash=$1 AND t.purpose='verify' AND t.expires_at>now() RETURNING t.user_id",
+            [hash(value)],
+          )
+        ).rows[0];
+        if (!record)
+          throw new HttpError(
+            400,
+            "Verification link invalid, expired or already used",
+          );
+        await db.query("UPDATE users SET email_verified_at=now() WHERE id=$1", [
+          record.user_id,
+        ]);
+        await audit(
+          db,
+          record.user_id,
+          "auth.email_verified",
+          "user",
+          record.user_id,
+        );
+      });
+      return Response.json({
+        ok: true,
+        message: "Your email is verified. You can return to your workspace.",
+      });
+    }
+    if (action === "revoke-session" || action === "revoke-sessions") {
+      const id =
+        action === "revoke-session" ? z.string().uuid().parse(body.id) : null;
+      await transaction(self!.id, async (db) => {
+        const changed = id
+          ? await db.query("DELETE FROM sessions WHERE id=$1 AND user_id=$2", [
+              id,
+              self!.id,
+            ])
+          : await db.query("DELETE FROM sessions WHERE user_id=$1", [self!.id]);
+        if (id && !changed.rowCount)
+          throw new HttpError(404, "Session not found");
+        await enqueueEmail(db, {
+          kind: "account_notification",
+          recipient: self!.email,
+          event: "sessions_revoked",
+        });
+        await audit(db, self!.id, "auth.sessions_revoked", "user", self!.id);
+      });
+      if (!id) (await cookies()).delete(sessionCookie);
+      return Response.json({
+        ok: true,
+        message: "Session access revoked.",
+        ...(id ? {} : { redirect: "/login" }),
+      });
     }
     if (action === "accept-invite") {
       const u = await actor();
@@ -248,10 +329,10 @@ export async function POST(
       const value = z.string().length(64).parse(body.token);
       await transaction(u.id, async (db) => {
         const invite = (
-          await db.query("SELECT * FROM accept_staff_invitation($1,$2)", [
-            hash(value),
-            u.id,
-          ])
+          await db.query(
+            "SELECT * FROM stay_private.accept_staff_invitation($1,$2)",
+            [hash(value), u.id],
+          )
         ).rows[0];
         if (!invite) throw new HttpError(400, "Invitation invalid or expired");
         await audit(

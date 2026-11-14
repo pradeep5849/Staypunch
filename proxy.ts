@@ -12,7 +12,13 @@ export function proxy(req: NextRequest) {
     base &&
     !path.startsWith("/api/") &&
     !path.startsWith("/_next/") &&
-    !["/login", "/register", "/reset-password", "/invite"].includes(path) &&
+    ![
+      "/login",
+      "/register",
+      "/reset-password",
+      "/invite",
+      "/verify-email",
+    ].includes(path) &&
     !path.startsWith("/admin") &&
     !path.startsWith("/app")
   ) {

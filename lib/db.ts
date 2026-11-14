@@ -1,15 +1,8 @@
 import { Pool, type PoolClient } from "pg";
+import { databaseConfig } from "./database-config";
 const globalDb = globalThis as unknown as { stayPool?: Pool };
 export function pool() {
-  if (!process.env.DATABASE_URL) throw new Error("Database is not configured");
-  return (globalDb.stayPool ??= new Pool({
-    connectionString: process.env.DATABASE_URL,
-    max: 10,
-    ssl:
-      process.env.DATABASE_SSL === "true"
-        ? { rejectUnauthorized: true }
-        : undefined,
-  }));
+  return (globalDb.stayPool ??= new Pool(databaseConfig("runtime")));
 }
 export async function transaction<T>(
   actor: string | null,

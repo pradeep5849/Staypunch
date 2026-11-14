@@ -9,23 +9,7 @@ permissions:
 jobs:
   foundation:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:17-alpine
-        env:
-          POSTGRES_DB: staypunch
-          POSTGRES_PASSWORD: ci-owner-only
-        ports: ["5432:5432"]
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
     env:
-      MIGRATION_DATABASE_URL: postgresql://postgres:ci-owner-only@localhost:5432/staypunch
-      TEST_DATABASE_OWNER_URL: postgresql://postgres:ci-owner-only@localhost:5432/staypunch
-      DATABASE_URL: postgresql://stay_app:ci-runtime-only@localhost:5432/staypunch
-      TEST_DATABASE_URL: postgresql://stay_app:ci-runtime-only@localhost:5432/staypunch
       APP_URL: http://localhost:3100
     steps:
       - uses: actions/checkout@v4
@@ -34,20 +18,26 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - name: Provision disposable PostgreSQL and simulated hosted roles
+        run: npx tsx scripts/setup-validation-database.ts
       - run: npm run migrate
-      - name: Provision restricted test role
-        run: |
-          psql "$MIGRATION_DATABASE_URL" -c "CREATE ROLE stay_app LOGIN PASSWORD 'ci-runtime-only' NOSUPERUSER NOBYPASSRLS;"
-          psql "$MIGRATION_DATABASE_URL" -f db/runtime-grants.sql
+      - name: Apply explicit application and mailer grants
+        run: npm run db:grants
+      - run: npm run db:check
       - run: npm run typecheck
       - run: npm run lint
+      - run: npm run format:check
       - run: npm test
       - run: npm run test:integration
+      - name: Disposable backup and restore exercise
+        env:
+          ALLOW_RESTORE_DRILL: "true"
+        run: npm run db:restore-drill
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - name: Browser and API acceptance
         run: |
-          npm run start -- --port 3100 > /tmp/staypunch-server.log 2>&1 &
+          env -u MIGRATION_DATABASE_URL -u EMAIL_DATABASE_URL -u TEST_DATABASE_OWNER_URL -u TEST_DATABASE_URL -u TEST_EMAIL_DATABASE_URL npm run start -- --port 3100 > /tmp/staypunch-server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for attempt in $(seq 1 30); do
@@ -55,3 +45,9 @@ jobs:
             sleep 1
           done
           npm run test:e2e
+      - name: Remove disposable validation database
+        if: always()
+        run: |
+          if [ -n "$PG_TOOLS_CONTAINER" ]; then
+            docker --host=unix:///var/run/docker.sock rm --force "$PG_TOOLS_CONTAINER"
+          fi

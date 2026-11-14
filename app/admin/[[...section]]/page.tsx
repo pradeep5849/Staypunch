@@ -1,3 +1,4 @@
+import { AccountSecurity } from "../../../components/account-security";
 import { redirect, notFound } from "next/navigation";
 import { actor } from "../../../lib/security";
 import { transaction } from "../../../lib/db";
@@ -778,6 +779,7 @@ export default async function Admin({
           </Panel>
         </div>
       )}
+      {section === "settings" && <AccountSecurity user={u} />}
       {section === "settings" && (
         <div className="dashboard-grid">
           <Panel title="Company and branding">

@@ -29,3 +29,7 @@
 | Production domains/deployment                                                    | Prepared/documented only; no DNS changes or deployment                                                           |
 
 This is an initial platform foundation, not a complete PMS or a claim that every planned capability is shipped. Production launch depends on the documented external configuration and review items.
+
+## Stage S1A progression
+
+Supabase-compatible configuration hardening, all-table RLS/private helpers, allowlisted runtime grants, dedicated mailer privileges, account verification, scoped session controls and tested email retries/recovery extend this baseline. Refer to the [stage report](planning/stage-report.md) and the new [audit/roadmap](planning/roadmap.md). Earlier feature-boundary statements still apply: real MFA, operational modules, provider approval/delivery and production deployment are not claimed.

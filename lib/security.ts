@@ -26,6 +26,7 @@ export type Actor = {
   email: string;
   platform_role: string;
   status: string;
+  email_verified_at: Date | null;
 };
 export async function actor(): Promise<Actor | null> {
   const value = (await cookies()).get(sessionCookie)?.value;
@@ -35,7 +36,7 @@ export async function actor(): Promise<Actor | null> {
     async (db) =>
       (
         await db.query(
-          "SELECT u.id,u.name,u.email,u.platform_role,u.status FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now() AND u.status='active'",
+          "SELECT u.id,u.name,u.email,u.platform_role,u.status,u.email_verified_at FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now() AND u.status='active'",
           [hash(value)],
         )
       ).rows[0] ?? null,
@@ -65,6 +66,14 @@ export async function propertyAccess(
   const row = result.rows[0];
   if (!row || row.status === "suspended" || row.status === "rejected")
     throw new HttpError(403, "Property access unavailable");
+  if (
+    ["staff.write", "modules.use"].includes(permission) &&
+    !user.email_verified_at
+  )
+    throw new HttpError(
+      403,
+      "Verify your email before inviting staff or using operational modules",
+    );
   const permissions: Record<string, string[]> = {
     owner: [
       "property.read",

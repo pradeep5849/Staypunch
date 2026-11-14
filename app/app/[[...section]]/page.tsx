@@ -1,3 +1,7 @@
+import {
+  AccountSecurity,
+  VerificationNotice,
+} from "../../../components/account-security";
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
 import { actor, propertyAccess } from "../../../lib/security";
@@ -154,6 +158,7 @@ export default async function Customer({
   };
   return (
     <Workspace section={section} name={u.name}>
+      <VerificationNotice user={u} />
       <div className="dashboard-title">
         <PageTitle
           eyebrow={p.name}
@@ -542,6 +547,7 @@ export default async function Customer({
           </Panel>
         </div>
       )}
+      {section === "settings" && <AccountSecurity user={u} />}
       {section === "settings" && (
         <div className="dashboard-grid">
           <Panel title="Account details">

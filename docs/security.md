@@ -27,3 +27,11 @@ Before release: choose a maintained TOTP library; keep envelope-encryption keys 
 ## Review boundaries
 
 Automated authorization, RLS, CSRF, password reset, invitation and release-gate tests are part of CI. They are not a third-party penetration test. Email adapter, production TLS, edge policy, retention and secrets are deployment configuration that must be verified in the real environment.
+
+## Stage S1A hardening
+
+All app tables have RLS; privileged helpers are in `stay_private` with explicit runtime execution grants. Legacy Data API roles lose table/function access, including service_role table grants, and future automatic grants by the migration owner are revoked. Runtime grants are allowlists with column restrictions: no platform-role insertion, no email-outbox reads, no MFA access. Mail delivery uses a separate queue-only SQL role. This is tested locally with simulated Supabase roles, not represented as a hosted-project audit.
+
+Account verification uses 24-hour hashed single-use tokens, authenticated self-only resend and atomic consumption. Staff invitation redemption verifies the matched invited email. Existing accounts are not bulk-verified. Foundation setup remains available, while staff invitations and future operational module checks require verified email. Session review exposes only opaque session IDs and timestamps; revocation is scoped to the signed-in user, with exact-origin checks and immediate database invalidation. MFA, device labels, suspicious-login monitoring and production retention remain incomplete.
+
+All database processes share bounded connection settings and verified remote TLS, rejecting URL parameters that could disable verification. Recovery has a local, opt-in disposable drill; production backups, TLS, Data API settings and real email delivery still need configuration and approval. See the stage report for evidence and unresolved findings.

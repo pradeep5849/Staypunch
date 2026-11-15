@@ -12,7 +12,7 @@ import {
 
 // Public CA bundled with Node, never a project secret or a test-only production trust override.
 const publicCa = rootCertificates[0].trim();
-test("CA normalization preserves trusted bytes for LF, CRLF and escaped newlines", () => {
+test("CA normalization preserves trusted bytes for multiline, escaped and flattened hosting values", () => {
   const expected = new X509Certificate(publicCa).fingerprint256;
   for (const input of [
     publicCa,
@@ -20,6 +20,8 @@ test("CA normalization preserves trusted bytes for LF, CRLF and escaped newlines
     publicCa.replaceAll("\n", "\r\n"),
     publicCa.replaceAll("\n", "\\n"),
     publicCa.replaceAll("\n", "\\r\\n"),
+    publicCa.replaceAll("\n", ""),
+    publicCa.replaceAll("\n", " "),
   ]) {
     const normalized = normalizeCaPem(input);
     assert.ok(normalized.endsWith("\n"));
@@ -41,6 +43,8 @@ test("invalid/missing CA fails without echoing its contents", () => {
     "invalid-sensitive-value",
     publicCa + "junk",
     "-----BEGIN CERTIFICATE-----\ninvalid\n-----END CERTIFICATE-----",
+    publicCa.replace("MI", "M#I"),
+    publicCa.replace("MI", "MII"),
   ]) {
     assert.throws(
       () => normalizeCaPem(input),

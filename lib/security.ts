@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import type { PoolClient } from "pg";
 import { transaction } from "./db";
 import { validRequestOrigin } from "./request-origin";
+import { serviceDiagnostic } from "./service-diagnostics";
 export class HttpError extends Error {
   constructor(
     public status: number,
@@ -122,7 +123,7 @@ export function responseError(e: unknown) {
       { error: "Please check the form fields" },
       { status: 400 },
     );
-  console.error("Request failed", e instanceof Error ? e.name : "unknown");
+  console.error("Request failed", serviceDiagnostic(e));
   return Response.json(
     { error: "Service unavailable. Please try again later." },
     { status: 503 },

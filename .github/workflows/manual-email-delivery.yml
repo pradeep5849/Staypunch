@@ -1,0 +1,54 @@
+name: Manual StayPunch360 approved email batch
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: "DELIVER-STAYPUNCH-AUTH-EMAILS only after separate sending approval"
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: staypunch360-email-delivery
+  cancel-in-progress: false
+jobs:
+  deliver:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirmation == 'DELIVER-STAYPUNCH-AUTH-EMAILS' }}
+    runs-on: ubuntu-latest
+    environment: staypunch360-production
+    timeout-minutes: 10
+    env:
+      EMAIL_SENDING_ENABLED: ${{ vars.EMAIL_SENDING_ENABLED || 'false' }}
+      EMAIL_PROVIDER: smtp
+      EMAIL_BATCH_SIZE: ${{ vars.EMAIL_BATCH_SIZE || '10' }}
+      EMAIL_MAX_PER_MINUTE: ${{ vars.EMAIL_MAX_PER_MINUTE || '5' }}
+      EMAIL_DATABASE_URL: ${{ secrets.STAYPUNCH_EMAIL_DATABASE_URL }}
+      DATABASE_SSL: "true"
+      NODE_ENV: production
+      SMTP_HOST: smtp.hostinger.com
+      SMTP_PORT: "465"
+      SMTP_SECURE: "true"
+      SMTP_USER: staypunch@salespunch360.com
+      SMTP_FROM: staypunch@salespunch360.com
+      SMTP_PASSWORD: ${{ secrets.STAYPUNCH_SMTP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Require separately approved sending enablement
+        run: test "$EMAIL_SENDING_ENABLED" = "true"
+      - name: Install trusted database CA
+        env:
+          DATABASE_CA_PEM: ${{ secrets.STAYPUNCH_DATABASE_CA_CERT }}
+        run: node scripts/install-database-ca.mjs
+      - run: npm ci --include=dev
+      - name: Process bounded approved batch
+        run: npm run email:deliver
+      - name: Remove temporary CA
+        if: always()
+        run: |
+          if [ -n "$DATABASE_CA_CERT_FILE" ]; then
+            rm -f -- "$DATABASE_CA_CERT_FILE"
+          fi

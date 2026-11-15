@@ -1,0 +1,48 @@
+name: Manual StayPunch360 SMTP verification and controlled test
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [verify, send-test]
+        required: true
+        default: verify
+      confirmation:
+        description: "VERIFY-STAYPUNCH-SMTP or SEND-STAYPUNCH-SMTP-TEST after separate approval"
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: staypunch360-smtp-check
+  cancel-in-progress: false
+jobs:
+  smtp:
+    if: ${{ github.ref == 'refs/heads/main' && ((inputs.mode == 'verify' && inputs.confirmation == 'VERIFY-STAYPUNCH-SMTP') || (inputs.mode == 'send-test' && inputs.confirmation == 'SEND-STAYPUNCH-SMTP-TEST')) }}
+    runs-on: ubuntu-latest
+    environment: staypunch360-production
+    timeout-minutes: 5
+    env:
+      EMAIL_SENDING_ENABLED: "false"
+      SMTP_HOST: smtp.hostinger.com
+      SMTP_PORT: "465"
+      SMTP_SECURE: "true"
+      SMTP_USER: staypunch@salespunch360.com
+      SMTP_FROM: staypunch@salespunch360.com
+      SMTP_PASSWORD: ${{ secrets.STAYPUNCH_SMTP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --include=dev
+      - name: Verify TLS and authentication only
+        if: ${{ inputs.mode == 'verify' }}
+        run: npm run email:verify
+      - name: Send exactly one approved token-free test
+        if: ${{ inputs.mode == 'send-test' }}
+        env:
+          EMAIL_TEST_RECIPIENT: ${{ secrets.STAYPUNCH_SMTP_TEST_RECIPIENT }}
+          SMTP_TEST_CONFIRMATION: ${{ inputs.confirmation }}
+        run: npm run email:test

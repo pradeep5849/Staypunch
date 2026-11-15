@@ -4,9 +4,16 @@ import { databaseConfig } from "../lib/database-config";
 
 const appPassword = process.env.STAYPUNCH_APP_DATABASE_PASSWORD;
 const mailerPassword = process.env.STAYPUNCH_MAILER_DATABASE_PASSWORD;
-if (!appPassword || !mailerPassword || appPassword === mailerPassword ||
-    appPassword.length < 24 || mailerPassword.length < 24) {
-  throw new Error("Two different database passwords of at least 24 characters are required");
+if (
+  !appPassword ||
+  !mailerPassword ||
+  appPassword === mailerPassword ||
+  appPassword.length < 24 ||
+  mailerPassword.length < 24
+) {
+  throw new Error(
+    "Two different database passwords of at least 24 characters are required",
+  );
 }
 const pool = new Pool(databaseConfig("migration"));
 const client = await pool.connect();
@@ -21,7 +28,9 @@ try {
       [role],
     );
     if (rows[0].exists) {
-      throw new Error(`Role ${role} already exists; refusing to rotate its password`);
+      throw new Error(
+        `Role ${role} already exists; refusing to rotate its password`,
+      );
     }
     const sql = await client.query<{ command: string }>(
       "SELECT format('CREATE ROLE %I LOGIN PASSWORD %L NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS', $1, $2) AS command",

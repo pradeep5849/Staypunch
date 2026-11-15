@@ -11,15 +11,19 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     environment: staypunch360-production
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Check existing administrator without changing credentials
+      - name: Install locked browser validation dependencies
+        run: npm ci --include=dev
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Check existing administrator without changing business records or credentials
         env:
           ADMIN_CHECK_URL: https://ivory-goat-945051.hostingersite.com
           ADMIN_CHECK_EMAIL: sales.amjconsterior@gmail.com
           ADMIN_CHECK_PASSWORD: ${{ secrets.STAYPUNCH_BOOTSTRAP_ADMIN_PASSWORD }}
-        run: node scripts/check-admin-login.mjs
+        run: npx tsx scripts/check-admin-browser.ts

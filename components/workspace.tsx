@@ -54,7 +54,7 @@ export function Workspace({
               className={section === label.toLowerCase() ? "active" : ""}
               href={i === 0 ? base : `${base}/${label.toLowerCase()}`}
             >
-              <span className="nav-icon">
+              <span className="nav-icon" aria-hidden="true">
                 {
                   ["◫", "⌂", "▦", "♧", "◷", "◇", "☷", "⌘", "◉", "›", "⚙", "≡"][
                     i

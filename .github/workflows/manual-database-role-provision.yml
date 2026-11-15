@@ -1,0 +1,57 @@
+name: Manual StayPunch360 restricted database roles
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: "Type PROVISION-STAYPUNCH-ROLES to confirm production role creation"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: staypunch360-production-database
+  cancel-in-progress: false
+
+jobs:
+  provision:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirmation == 'PROVISION-STAYPUNCH-ROLES' }}
+    runs-on: ubuntu-latest
+    environment: staypunch360-production
+    timeout-minutes: 15
+    env:
+      MIGRATION_DATABASE_URL: ${{ secrets.STAYPUNCH_MIGRATION_DATABASE_URL }}
+      STAYPUNCH_APP_DATABASE_PASSWORD: ${{ secrets.STAYPUNCH_APP_DATABASE_PASSWORD }}
+      STAYPUNCH_MAILER_DATABASE_PASSWORD: ${{ secrets.STAYPUNCH_MAILER_DATABASE_PASSWORD }}
+      DATABASE_SSL: "true"
+      NODE_ENV: production
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Validate required secrets
+        run: |
+          if [ -z "$MIGRATION_DATABASE_URL" ] || [ -z "$STAYPUNCH_APP_DATABASE_PASSWORD" ] || [ -z "$STAYPUNCH_MAILER_DATABASE_PASSWORD" ]; then
+            echo "::error::Missing protected database provisioning secrets."
+            exit 1
+          fi
+      - name: Install trusted database CA certificate
+        env:
+          DATABASE_CA_PEM: ${{ secrets.STAYPUNCH_DATABASE_CA_CERT }}
+        run: node scripts/install-database-ca.mjs
+      - name: Install locked dependencies
+        run: npm ci --include=dev
+      - name: Provision roles and apply existing grants
+        run: npx tsx scripts/provision-database-roles.ts
+      - name: Remove temporary database CA
+        if: always()
+        run: |
+          if [ -n "$DATABASE_CA_CERT_FILE" ]; then
+            rm -f -- "$DATABASE_CA_CERT_FILE"
+          fi

@@ -1,6 +1,8 @@
 import { Pool } from "pg";
 import { readFile } from "node:fs/promises";
 import { databaseConfig } from "../lib/database-config";
+import { roleCreationCommand } from "./lib/database-roles";
+import type { PoolClient } from "pg";
 
 const appPassword = process.env.STAYPUNCH_APP_DATABASE_PASSWORD;
 const mailerPassword = process.env.STAYPUNCH_MAILER_DATABASE_PASSWORD;
@@ -16,8 +18,9 @@ if (
   );
 }
 const pool = new Pool(databaseConfig("migration"));
-const client = await pool.connect();
+let client: PoolClient | undefined;
 try {
+  client = await pool.connect();
   await client.query("BEGIN");
   for (const [role, secret] of [
     ["stay_app", appPassword],
@@ -32,20 +35,25 @@ try {
         `Role ${role} already exists; refusing to rotate its password`,
       );
     }
-    const sql = await client.query<{ command: string }>(
-      "SELECT format('CREATE ROLE %I LOGIN PASSWORD %L NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS', $1, $2) AS command",
-      [role, secret],
-    );
-    await client.query(sql.rows[0].command);
+    await client.query(await roleCreationCommand(client, role, secret));
   }
   await client.query(await readFile("db/runtime-grants.sql", "utf8"));
   await client.query(await readFile("db/email-worker-grants.sql", "utf8"));
   await client.query("COMMIT");
   console.log("Restricted database roles created and reviewed grants applied.");
-} catch (error) {
-  await client.query("ROLLBACK");
-  throw error;
+} catch {
+  if (client) {
+    try {
+      await client.query("ROLLBACK");
+    } catch {
+      // Never print database diagnostics: they can contain password-bearing SQL.
+    }
+  }
+  console.error(
+    "Database role provisioning failed; existing roles are never overwritten. Check protected configuration and database access privately.",
+  );
+  process.exitCode = 1;
 } finally {
-  client.release();
+  client?.release();
   await pool.end();
 }

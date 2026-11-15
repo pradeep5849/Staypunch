@@ -7,6 +7,7 @@ import {
   HttpError,
   propertyAccess,
   requireActor,
+  rateLimit,
   responseError,
   token,
 } from "../../../../lib/security";
@@ -54,6 +55,7 @@ export async function POST(
         const d = z
           .object({ email, role: z.enum(["manager", "staff"]) })
           .parse(body);
+        await rateLimit(db, `staff-invitation:${u.id}:${pid}`, 10, 900);
         const secret = token();
         await db.query(
           "INSERT INTO staff_invitations(property_id,email,role,token_hash,invited_by,expires_at) VALUES($1,$2,$3,$4,$5,now()+interval '3 days')",

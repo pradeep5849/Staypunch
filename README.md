@@ -43,3 +43,5 @@ Production deployment, DNS changes and merging require explicit approval. This i
 The consolidated 39-module PDF and the new audit/roadmap are in [planning](docs/planning/source-baseline.md). See the [repository audit](docs/planning/repository-audit.md), [all-module roadmap](docs/planning/roadmap.md), [146-requirement register](docs/planning/requirements-register.json), and [Stage S1A report](docs/planning/stage-report.md).
 
 Initial production database: Supabase PostgreSQL; authentication remains independent of Supabase Auth. See [connection/grant readiness](docs/database-readiness.md), [provider contract](docs/email-readiness.md), and [backup, restore and VPS migration](docs/backup-restore.md). No production credentials are needed for local tests, and no module is released by this foundation work.
+
+SMTP delivery remains disabled by default. See [Hostinger SMTP implementation and approval gates](docs/hostinger-smtp.md) before configuring credentials, testing or enabling the separate restricted mailer.

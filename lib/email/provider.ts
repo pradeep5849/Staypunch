@@ -10,11 +10,14 @@ export type DeliveryReceipt = {
 };
 export interface EmailProvider {
   send(message: DeliveryMessage): Promise<DeliveryReceipt>;
+  verify?(): Promise<void>;
+  close?(): void;
 }
 export class DeliveryError extends Error {
   constructor(
     public code: string,
     public permanent = false,
+    public haltBatch = false,
   ) {
     super(code);
   }
